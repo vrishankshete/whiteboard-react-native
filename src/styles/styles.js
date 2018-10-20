@@ -9,10 +9,12 @@ export const homeStyles = StyleSheet.create({
         width:'100%'
     },
     inputContainer: {
-        flex:0.4,
+        flexDirection:'row',
+        flex:0.8,
         width:'80%',
         height:'100%',
-        alignItems:'center'
+        alignItems:'center',
+        justifyContent:'center'
     },
     messageContainer:{
         flex:0.8,
@@ -33,8 +35,7 @@ export const homeStyles = StyleSheet.create({
         color:'white'
     },
     input: {
-        width:'80%',
-        height:'30%',
+        width:'100%',
         textAlign: 'center',
         color:'white',
         borderBottomColor:'white',

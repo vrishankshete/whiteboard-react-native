@@ -1,7 +1,8 @@
 import React from 'react';
 import ToolTip from './ToolTip';
+//import { G, Line as Line1 } from 'react-native-svg';
 import { Svg } from 'expo';
-const { G } = Svg;
+const { G, Line:Line1 } = Svg;
 
 export default class Line extends React.Component{
     constructor(props){
@@ -12,7 +13,6 @@ export default class Line extends React.Component{
     }
     mouseEntered(){
         this.setState({mouseOverMe:true});
-        console.log('line');
     }
     mouseOut(){
         this.setState({mouseOverMe:false});
@@ -24,7 +24,7 @@ export default class Line extends React.Component{
         if(showToolTip){
             return (
                 <G> 
-                    <Svg.Line strokeWidth={style.strokeWidth} stroke={style.stroke} x1={x1} y1={y1} x2={x2} y2={y2}/>                    
+                    <Line1 strokeWidth={style.strokeWidth} stroke={style.stroke} x1={x1} y1={y1} x2={x2} y2={y2}/>                    
                     <ToolTip name={name} x={x2} y={y2}/>
                 </G>
             );
@@ -33,14 +33,14 @@ export default class Line extends React.Component{
             let styleOverlay = {...style, strokeWidth:'10', strokeLinecap:'round'};
             return (
                 <G> 
-                    {this.state.mouseOverMe?<Svg.Line fill="none" strokeWidth={styleOverlay.strokeWidth} stroke={styleOverlay.stroke} strokeLinecap={'round'} strokeOpacity={0.5} x1={x1} y1={y1} x2={x2} y2={y2}/>:''}
-                    <Svg.Line fill="none" strokeWidth={style.strokeWidth} stroke={style.stroke} x1={x1} y1={y1} x2={x2} y2={y2}/>
-                    <Svg.Line onPressIn={()=>{this.mouseEntered();}} onPressOut={()=>{this.mouseOut(); this.props.removeDrawing(drawingId);}}
+                    {this.state.mouseOverMe && <Line1 fill="none" strokeWidth={styleOverlay.strokeWidth} stroke={styleOverlay.stroke} strokeLinecap={'round'} strokeOpacity={0.5} x1={x1} y1={y1} x2={x2} y2={y2}/>}
+                    <Line1 fill="none" strokeWidth={style.strokeWidth} stroke={style.stroke} x1={x1} y1={y1} x2={x2} y2={y2}/>
+                    <Line1 onPressIn={()=>{this.mouseEntered();}} onPressOut={()=>{this.mouseOut(); this.props.removeDrawing(drawingId);}}
                         fill="none" strokeWidth={styleOverlay.strokeWidth} stroke={styleOverlay.stroke} strokeOpacity={0} x1={x1} y1={y1} x2={x2} y2={y2}/>
                 </G>
             );
         }
-        return(<Svg.Line fill="none" strokeWidth={style.strokeWidth} stroke={style.stroke} x1={x1} y1={y1} x2={x2} y2={y2}/>);
+        return(<Line1 fill="none" strokeWidth={style.strokeWidth} stroke={style.stroke} x1={x1} y1={y1} x2={x2} y2={y2}/>);
     }
     render(){
         return this.renderShape();

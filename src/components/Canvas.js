@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { View, Dimensions} from 'react-native';
 import Shape from './Shapes/Shape';
 import helper from './Shapes/ShapeHelper';
+//import Svg from 'react-native-svg';
 import { Svg } from 'expo';
 import { canvasStyles } from '../styles/styles';
 const {width,height} = Dimensions.get('window');
@@ -87,7 +88,7 @@ class Canvas extends React.Component{
     }
 
     svgMouseDown(e){
-        if(this.props.selectedTool === 'remove') return;
+        if(this.props.selectedTool === 'removeDrawing') return;
         this.penDown = true;
         let style = this.getCommonSVGStyle(e);
         helper[this.props.selectedTool].penDown({x:e.nativeEvent.locationX,y:e.nativeEvent.locationY});
@@ -151,8 +152,8 @@ class Canvas extends React.Component{
     render(){
         return (
             <View style={canvasStyles.container}
-                onStartShouldSetResponder={(e) => {this.svgMouseDown(e);return this.props.selectedTool=='remove'?false:true}}
-                onMoveShouldSetResponder={(e) => {return this.props.selectedTool=='remove'?false:true}}
+                onStartShouldSetResponder={(e) => {this.svgMouseDown(e);return this.props.selectedTool=='removeDrawing'?false:true}}
+                onMoveShouldSetResponder={(e) => {return this.props.selectedTool=='removeDrawing'?false:true}}
                 onResponderMove={(e)=>this.svgMouseMove(e)}
                 onResponderRelease={(e)=>this.svgMouseUp(e)}>
                 <Svg height={height} width={width} >
@@ -160,7 +161,7 @@ class Canvas extends React.Component{
                         this.state.drawings.map(drawing=><Shape key={drawing.drawingId}
                             removeDrawing={this.removeDrawing.bind(this)} 
                             drawingId={drawing.drawingId} 
-                            showOverlay={this.props.selectedTool==='remove'?true:false}
+                            showOverlay={this.props.selectedTool==='removeDrawing'?true:false}
                             shape={drawing.drawingData}
                         />)
                     }

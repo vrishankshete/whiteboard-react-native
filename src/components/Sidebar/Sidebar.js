@@ -18,12 +18,12 @@ class Sidebar extends React.Component{
             <View style={{flex:1}}>
                 {[{key:'pen',display:'Pen'},{key:'pencil',display:'Dotted Pen'},
                 {key:'line',display:'Line'},{key:'rectangle',display:'Rectangle'},
-                {key:'ellipse',display:'Ellipse'},{key:'remove',display:'Remove'},
-                {key:'clearAll',display:'Clear All'}].map((element)=>{
-                    return(<View key={element.key} style={{flex:1}}>
+                {key:'ellipse',display:'Ellipse'},{key:'removeDrawing',display:'Remove'},
+                {key:'clearAll',display:'Clear All'}].map((element,index)=>{
+                    return(<View key={index} style={{flex:1}}>
                         <TouchableOpacity style={[sidebarStyles.shapeButton, {backgroundColor:this.props.selectedTool==element.key?'green':'yellow'}]}
                             onPress={()=>{this.changeTool(element.key)}}>
-                            <Text >{element.display}</Text>
+                            <Text>{element.display}</Text>
                         </TouchableOpacity>
                     </View>);
                 })}

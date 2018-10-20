@@ -55,12 +55,12 @@ class Home extends React.Component{
             <View style={homeStyles.container}>
                 <View style={homeStyles.messageContainer}><Text style={homeStyles.textBig}>{'Blackboard.io'}</Text></View>
                 <View style={homeStyles.inputContainer}>
-                    <Text style={homeStyles.textMedium}>{'*Name:'}</Text>
-                    <TextInput placeholder='Touch here to enter name' underlineColorAndroid='transparent' style={homeStyles.input} onChangeText={(nameText)=>{this.nameEntered(nameText)}}/>
+                    <View style={{flex:0.7, alignItems:'flex-start'}}><Text style={homeStyles.textMedium}>{'*Name:'}</Text></View>
+                    <View style={{flex:1, alignItems:'flex-start'}}><TextInput placeholder='Touch to enter name' placeholderTextColor='gray' underlineColorAndroid='transparent' style={homeStyles.input} onChangeText={(nameText)=>{this.nameEntered(nameText)}}/></View>
                 </View>
                 <View style={homeStyles.inputContainer}>
-                    <Text style={homeStyles.textMedium}>{'*Room Id:'}</Text>
-                    <TextInput placeholder='Touch here to enter room id' underlineColorAndroid='transparent' style={homeStyles.input} keyboardType='numeric' maxLength={4} onChangeText={(roomIdText)=>{this.roomIdEntered(roomIdText)}}/>
+                    <View style={{flex:0.7, alignItems:'flex-start'}}><Text style={homeStyles.textMedium}>{'*Room Id:'}</Text></View>
+                    <View style={{flex:1, alignItems:'flex-start'}}><TextInput placeholder='Touch to enter room id' placeholderTextColor='gray' underlineColorAndroid='transparent' style={homeStyles.input} keyboardType='numeric' maxLength={4} onChangeText={(roomIdText)=>{this.roomIdEntered(roomIdText)}}/></View>
                 </View>
                 <View style={homeStyles.inputContainer}>
                     <TouchableOpacity style={homeStyles.joinButton} 
